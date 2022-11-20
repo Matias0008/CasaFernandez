@@ -179,7 +179,6 @@ def pedidos():
     Button(frame_cmd, text="Limpiar selección", command=lambda: vaciar_selecciones(tv_vajillas,
                                                                                    tv_vajillas.selection()), font=("Helvetica", 14)).grid(column=1, row=2, padx=7, pady=(0, 10))
 
-<<<<<<< HEAD
     Button(frame_cmd, text="Ordenar pedidos", command=lambda: insertar_pedidos(ordenar_fechas_pedidos(conseguir_pedidos_tv(
         tv_pedidos.get_children(), tv_pedidos), tv_pedidos), tv_pedidos),
         font=("Helvetica", 14)).grid(column=2, row=2,  padx=7, pady=(0, 10))
@@ -189,10 +188,6 @@ def pedidos():
 
     Button(frame_cmd, text="Filtrar no entregados", command=lambda: insertar_pedidos(filtrar_no_entregados(conseguir_pedidos()), tv_pedidos, 0, True),
            font=("Helvetica", 14)).grid(column=2, row=3, padx=7, pady=(0, 10), columnspan=2)
-=======
-    Button(frame_cmd, text="Ordenar fechas", command=lambda: insertar_pedidos(ordenar_fechas_pedidos(conseguir_pedidos(), tv_pedidos), tv_pedidos),
-           font=("Helvetica", 14)).grid(column=2, row=2,  ipadx=20, padx=7, pady=(0, 10))
->>>>>>> 8cf9f9aba8a5c0ee1b89824360abb0d6923558b1
 
     Button(frame_cmd, text="Restaurar", command=lambda: insertar_pedidos(conseguir_pedidos(), tv_pedidos, 0, True),
            font=("Helvetica", 14)).grid(column=3, row=2,  ipadx=20, padx=7, pady=(0, 10))
@@ -224,11 +219,7 @@ def ampliar_pedido(pedido, tv_pedidos):
     Label(frame, text=pedido.get('fecha'),
           font=("Helvetica", 16, "bold")).grid(column=2, row=0, padx=30)
 
-<<<<<<< HEAD
     Label(frame, text=f"Cliente\n{pedido.get('nombre')} {pedido.get('apellido')}\n{pedido.get('direccion')}\n{pedido.get('dni')}\n{pedido.get('telefono')}\n\nTrabajador: {pedido.get('trabajador')}",
-=======
-    Label(frame, text=f"{pedido.get('nombre')} {pedido.get('apellido')}\n{pedido.get('direccion')}\n{pedido.get('dni')}\nTeléfono: {pedido.get('telefono')}\nTrabajador: {pedido.get('trabajador')}",
->>>>>>> 8cf9f9aba8a5c0ee1b89824360abb0d6923558b1
           font=("Helvetica", 16, "bold")).grid(column=2, row=1, padx=30)
 
     Button(frame, text={True: "Desmarcar entrega", False: "Registrar entrega"}[pedido.get('entregado')], command=lambda: registrar_entrega(pedido.get('id'), tv_pedidos, top),

@@ -56,11 +56,6 @@ def filtrar_no_entregados(pedidos):
 
 def insertar_pedidos(pedidos, tv,  i=0, limpiar_tv=False):
     if limpiar_tv:
-<<<<<<< HEAD
-
-=======
-        print(tv.get_children(), *tv.get_children())
->>>>>>> 8cf9f9aba8a5c0ee1b89824360abb0d6923558b1
         tv.delete(*tv.get_children())
 
     if i == len(pedidos):
@@ -129,6 +124,7 @@ def conseguir_clientes():
     with open("assets/json/clientes.json") as f:
         return json.load(f)
 
+
 def insertar_clientes(clientes, tv, i=0, limpiar_tv=False):
     if limpiar_tv:
         tv.delete(*tv.get_children())
@@ -139,6 +135,7 @@ def insertar_clientes(clientes, tv, i=0, limpiar_tv=False):
         clientes[i]['dni'], clientes[i]['nombre'], clientes[i]['apellido'], clientes[i]['telefono']))
 
     return insertar_clientes(clientes, tv, i + 1)
+
 
 def insertar_clientes(clientes, tv, i=0, limpiar_tv=False):
     if limpiar_tv:

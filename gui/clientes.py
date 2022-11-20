@@ -9,11 +9,11 @@ def clientes():
 
     frame = LabelFrame(top, text="Registrar cliente",
                        font=("Helvetica", 16, "bold"), padx=20, pady=20)
-    frame.grid(column=1, row=0, pady=(40,15), padx=30)
+    frame.grid(column=1, row=0, pady=(40, 15), padx=30)
     frame_tv = Frame(top)
     frame_tv.grid(column=0, row=0)
     Label(frame_tv, text="Clientes",
-          font=("Helvetica", 16, "bold")).grid(column=0, row=1, pady=(0,10))
+          font=("Helvetica", 16, "bold")).grid(column=0, row=1, pady=(0, 10))
     tv = ttk.Treeview(frame_tv, height=13,
                       selectmode="none")
     tv.grid(column=0, row=2, padx=30, sticky=N)
@@ -58,7 +58,7 @@ def clientes():
                   width=15, font=("Helvetica", 14))
     dni_e.grid(column=2, row=3, pady=(0, 20))
     telefono_e = Entry(frame, textvariable=telefono_var,
-                  width=15, font=("Helvetica", 14))
+                       width=15, font=("Helvetica", 14))
     telefono_e.grid(column=1, row=5, pady=(0, 20), columnspan=2)
     Button(frame, text="Agregar", command=lambda: agregar({
         "nombre": nombre_var.get(),
@@ -66,7 +66,7 @@ def clientes():
         "direccion": direccion_var.get(),
         "dni": dni_var.get(),
         "telefono": telefono_var.get()
-    }, top, nombre_var, apellido_var, direccion_var, dni_var, telefono_var,tv), font=("Helvetica", 14), fg="green").grid(
+    }, top, nombre_var, apellido_var, direccion_var, dni_var, telefono_var, tv), font=("Helvetica", 14), fg="green").grid(
         column=1, row=6, columnspan=2, ipadx=25)
 
     top.mainloop()
@@ -91,7 +91,6 @@ def agregar(data, frame, nombre_var, apellido_var, direccion_var, dni_var, telef
             apellido_var.set('')
             direccion_var.set('')
             dni_var.set('')
-            
     else:
         messagebox.showerror(
             "Error", "Error, el cliente ya existe", parent=frame)

@@ -1,0 +1,156 @@
+<<<<<<< HEAD
+[
+    {
+        "id": 1,
+        "vajilla": [
+            {
+                "id": 2,
+                "nombre": "Copa de agua"
+            }
+        ],
+        "nombre": "Raul",
+        "apellido": "Alcaide",
+        "direccion": "Av Santa Fe 3951",
+        "dni": "44741306",
+        "telefono": "154187294",
+        "trabajador": "Matias",
+        "fecha": "19/11/2022 21:23",
+        "fecha_entrega": "24/11/2022",
+        "entregado": true
+    },
+    {
+        "id": 2,
+        "vajilla": [
+            {
+                "id": 3,
+                "nombre": "Copa de champagne"
+            }
+        ],
+        "nombre": "Raul",
+        "apellido": "Alcaide",
+        "direccion": "Av Santa Fe 3951",
+        "dni": "44741306",
+        "telefono": "154187294",
+        "trabajador": "Matias",
+        "fecha": "20/11/2022 00:04",
+        "fecha_entrega": "24/11/2022",
+        "entregado": false
+    },
+    {
+        "id": 3,
+        "vajilla": [
+            {
+                "id": 8,
+                "nombre": "Plato de postre"
+            }
+        ],
+        "nombre": "Matias",
+        "apellido": "Delgado",
+        "direccion": "Bv Italia 1095",
+        "dni": "46888263",
+        "telefono": "154197321",
+        "trabajador": "Matias",
+        "fecha": "20/11/2022 00:18",
+        "fecha_entrega": "24/11/2022",
+        "entregado": true
+    },
+    {
+        "id": 4,
+        "vajilla": [
+            {
+                "id": 3,
+                "nombre": "Copa de champagne"
+            }
+        ],
+        "nombre": "Raul",
+        "apellido": "Alcaide",
+        "direccion": "Av Santa Fe 3951",
+        "dni": "44741306",
+        "telefono": "154187294",
+        "trabajador": "Seleccione un empleado",
+        "fecha": "20/11/2022 00:46",
+        "fecha_entrega": "18/07/2022",
+        "entregado": false
+    },
+    {
+        "id": 5,
+        "vajilla": [
+            {
+                "id": 1,
+                "nombre": "Copa de vino"
+            },
+            {
+                "id": 5,
+                "nombre": "Plato de entrada"
+            },
+            {
+                "id": 6,
+                "nombre": "Plato principal"
+            },
+            {
+                "id": 8,
+                "nombre": "Plato de postre"
+            }
+        ],
+        "nombre": "Matias",
+        "apellido": "Delgado",
+        "direccion": "Bv Italia 1095",
+        "dni": "46888263",
+        "telefono": "154197321",
+        "trabajador": "Federico",
+        "fecha": "20/11/2022 00:51",
+        "fecha_entrega": "24/11/2022",
+        "entregado": false
+    },
+    {
+        "id": 6,
+        "vajilla": [
+            {
+                "id": 5,
+                "nombre": "Plato de entrada"
+            }
+        ],
+        "nombre": "Matias",
+        "apellido": "Delgado",
+        "direccion": "Bv Italia 1095",
+        "dni": "46888263",
+        "telefono": "154197321",
+        "trabajador": "Nicolas",
+        "fecha": "20/11/2022 00:51",
+        "fecha_entrega": "07/11/2022",
+        "entregado": false
+    },
+    {
+        "id": 7,
+        "vajilla": [
+            {
+                "id": 1,
+                "nombre": "Copa de vino"
+            },
+            {
+                "id": 6,
+                "nombre": "Plato principal"
+            },
+            {
+                "id": 9,
+                "nombre": "Tenedor para entrada"
+            },
+            {
+                "id": 12,
+                "nombre": "Cuchillo principal"
+            }
+        ],
+        "nombre": "Raul",
+        "apellido": "Alcaide",
+        "direccion": "Av Santa Fe 3951",
+        "dni": "44741306",
+        "telefono": "154187294",
+        "trabajador": "Francisco",
+        "fecha": "20/11/2022 01:01",
+        "fecha_entrega": "11/10/2022",
+        "entregado": false
+    }
+]
+=======
+[]
+>>>>>>> 8cf9f9aba8a5c0ee1b89824360abb0d6923558b1

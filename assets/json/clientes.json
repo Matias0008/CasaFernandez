@@ -1,0 +1,51 @@
+[
+    {
+        "nombre": "Raul",
+        "apellido": "Alcaide",
+        "direccion": "Av Santa Fe 3951",
+        "dni": "44741306",
+        "telefono": "154187294"
+    },
+    {
+        "nombre": "Paco",
+        "apellido": "Lucas",
+        "direccion": "Coronel Apolinario Figueroa 299",
+        "dni": "47471293",
+        "telefono": "155089732"
+    },
+    {
+        "nombre": "Maria",
+        "apellido": "Esther",
+        "direccion": "Cordoba 46",
+        "dni": "21757293",
+        "telefono": "155982703"
+    },
+    {
+        "nombre": "Gustavo",
+        "apellido": "Morera",
+        "direccion": "Urquiza 765",
+        "dni": "46883213",
+        "telefono": "154093021"
+    },
+    {
+        "nombre": "Samara",
+        "apellido": "Esperanza",
+        "direccion": "Guardia Vieja 1998, Vistalba",
+        "dni": "21757080",
+        "telefono": "155987213"
+    },
+    {
+        "nombre": "Matias",
+        "apellido": "Delgado",
+        "direccion": "Bv Italia 1095",
+        "dni": "46888263",
+        "telefono": "154197321"
+    },
+    {
+        "nombre": "Prueba",
+        "apellido": "Prueba",
+        "direccion": "Prueba",
+        "dni": "44741312",
+        "telefono": "155086803"
+    }
+]

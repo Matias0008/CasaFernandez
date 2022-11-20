@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "nombre": "Copa de vino"
+  },
+  {
+    "id": 2,
+    "nombre": "Copa de agua"
+  },
+  {
+    "id": 3,
+    "nombre": "Copa de champagne"
+  },
+  {
+    "id": 4,
+    "nombre": "Plato base"
+  },
+  {
+    "id": 5,
+    "nombre": "Plato de entrada"
+  },
+  {
+    "id": 6,
+    "nombre": "Plato principal"
+  },
+  {
+    "id": 7,
+    "nombre": "Copa de postre"
+  },
+  {
+    "id": 8,
+    "nombre": "Plato de postre"
+  },
+  {
+    "id": 9,
+    "nombre": "Tenedor para entrada"
+  },
+  {
+    "id": 10,
+    "nombre": "Tenedor principal"
+  },
+  {
+    "id": 11,
+    "nombre": "Cuchillo para entrada"
+  },
+  {
+    "id": 12,
+    "nombre": "Cuchillo principal"
+  }
+]

@@ -172,28 +172,33 @@ def pedidos():
     insertar_pedidos(conseguir_pedidos(), tv_pedidos)
     frame_cmd = LabelFrame(top_pedidos, text="Comandos",
                            font=("Helvetica", 16, "bold"), padx=10, pady=10)
-    frame_cmd.grid(column=0, row=2, columnspan=4, padx=15, pady=20)
+    frame_cmd.grid(column=0, row=2, columnspan=4, padx=15, pady=(20, 25))
 
     Button(frame_cmd, text="Registrar pedido", command=lambda: registrar_pedido(
-        tv_vajillas.selection(), dni_var.get(), top_pedidos, cliente_var.get()), font=("Helvetica", 14), fg="green").grid(column=0, row=2, padx=7, pady=(0, 10))
+        tv_vajillas.selection(), dni_var.get(), top_pedidos,
+        cliente_var.get()), font=("Helvetica", 14), fg="green").grid(column=0,
+                                                                     row=2,
+                                                                     padx=10,
+                                                                     pady=(0,
+                                                                           10))
     Button(frame_cmd, text="Limpiar selección", command=lambda: vaciar_selecciones(tv_vajillas,
                                                                                    tv_vajillas.selection()), font=("Helvetica", 14)).grid(column=1, row=2, padx=7, pady=(0, 10))
 
     Button(frame_cmd, text="Ordenar pedidos", command=lambda: insertar_pedidos(ordenar_fechas_pedidos(conseguir_pedidos_tv(
         tv_pedidos.get_children(), tv_pedidos), tv_pedidos), tv_pedidos),
-        font=("Helvetica", 14)).grid(column=2, row=2,  padx=7, pady=(0, 10))
+        font=("Helvetica", 14)).grid(column=2, row=2,  padx=10, pady=(0, 10))
 
     Button(frame_cmd, text="Filtrar entregados", command=lambda: insertar_pedidos(filtrar_entregados(conseguir_pedidos()), tv_pedidos, 0, True),
-           font=("Helvetica", 14)).grid(column=0, row=3,   padx=7, pady=(0, 10), columnspan=3)
+           font=("Helvetica", 14)).grid(column=0, row=3,   padx=8, pady=(0, 10), columnspan=3)
 
     Button(frame_cmd, text="Filtrar no entregados", command=lambda: insertar_pedidos(filtrar_no_entregados(conseguir_pedidos()), tv_pedidos, 0, True),
            font=("Helvetica", 14)).grid(column=2, row=3, padx=7, pady=(0, 10), columnspan=2)
 
     Button(frame_cmd, text="Restaurar", command=lambda: insertar_pedidos(conseguir_pedidos(), tv_pedidos, 0, True),
-           font=("Helvetica", 14)).grid(column=3, row=2,  ipadx=20, padx=7, pady=(0, 10))
+           font=("Helvetica", 14)).grid(column=3, row=2,  ipadx=20, padx=10, pady=(0, 10))
 
     Button(frame_cmd, text="Salir", command=lambda: top_pedidos.destroy(),
-           font=("Helvetica", 14), fg="red").grid(column=4, row=2,  ipadx=30, padx=7, pady=(0, 10))
+           font=("Helvetica", 14), fg="red").grid(column=4, row=2,  ipadx=30, padx=10, pady=(0, 10))
 
 
 def ampliar_pedido(pedido, tv_pedidos):

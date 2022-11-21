@@ -47,5 +47,12 @@
         "direccion": "Prueba",
         "dni": "44741312",
         "telefono": "155086803"
+    },
+    {
+        "nombre": "Cliente",
+        "apellido": "Prueba",
+        "direccion": "Bv Italia 1095",
+        "dni": "44741307",
+        "telefono": "154197321"
     }
 ]

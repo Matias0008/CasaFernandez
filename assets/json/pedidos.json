@@ -1,82 +1,252 @@
 [
-  {
-    "id": 1,
-    "vajilla": [
-      {
-        "id": 3,
-        "nombre": "Copa de champagne",
-        "precio": 5000
-      },
-      {
-        "id": 12,
-        "nombre": "Cuchillo principal",
-        "precio": 1500
-      }
-    ],
-    "nombre": "Raul",
-    "apellido": "Alcaide",
-    "direccion": "Av Santa Fe 3951",
-    "dni": "44741306",
-    "telefono": "154187294",
-    "trabajador": "Matias",
-    "fecha": "22/11/2022 22:23",
-    "fecha_entrega": "24/11/2022",
-    "total": 6500,
-    "entregado": true
-  },
-  {
-    "id": 2,
-    "vajilla": [
-      {
+    {
+        "id": 1,
+        "vajilla": [
+            {
+                "id": 3,
+                "nombre": "Copa de champagne",
+                "precio": 5000
+            },
+            {
+                "id": 12,
+                "nombre": "Cuchillo principal",
+                "precio": 1500
+            }
+        ],
+        "nombre": "Raul",
+        "apellido": "Alcaide",
+        "direccion": "Av Santa Fe 3951",
+        "dni": "44741306",
+        "telefono": "154187294",
+        "trabajador": "Matias",
+        "fecha": "22/11/2022 22:23",
+        "fecha_entrega": "24/11/2022",
+        "total": 6500,
+        "entregado": true
+    },
+    {
         "id": 2,
-        "nombre": "Copa de agua",
-        "precio": 3000
-      },
-      {
+        "vajilla": [
+            {
+                "id": 2,
+                "nombre": "Copa de agua",
+                "precio": 3000
+            },
+            {
+                "id": 3,
+                "nombre": "Copa de champagne",
+                "precio": 5000
+            },
+            {
+                "id": 10,
+                "nombre": "Tenedor principal",
+                "precio": 5000
+            }
+        ],
+        "nombre": "Raul",
+        "apellido": "Alcaide",
+        "direccion": "Av Santa Fe 3951",
+        "dni": "44741306",
+        "telefono": "154187294",
+        "trabajador": "Federico",
+        "fecha": "22/11/2022 22:54",
+        "fecha_entrega": "05/07/2023",
+        "total": 13000,
+        "entregado": false
+    },
+    {
         "id": 3,
-        "nombre": "Copa de champagne",
-        "precio": 5000
-      },
-      {
-        "id": 10,
-        "nombre": "Tenedor principal",
-        "precio": 5000
-      }
-    ],
-    "nombre": "Raul",
-    "apellido": "Alcaide",
-    "direccion": "Av Santa Fe 3951",
-    "dni": "44741306",
-    "telefono": "154187294",
-    "trabajador": "Federico",
-    "fecha": "22/11/2022 22:54",
-    "fecha_entrega": "05/07/2023",
-    "total": 13000,
-    "entregado": false
-  },
-  {
-    "id": 3,
-    "vajilla": [
-      {
+        "vajilla": [
+            {
+                "id": 6,
+                "nombre": "Plato principal",
+                "precio": 4500
+            },
+            {
+                "id": 7,
+                "nombre": "Copa de postre",
+                "precio": 3000
+            }
+        ],
+        "nombre": "Raul",
+        "apellido": "Alcaide",
+        "direccion": "Av Santa Fe 3951",
+        "dni": "44741306",
+        "telefono": "154187294",
+        "trabajador": "Nicolas",
+        "fecha": "22/11/2022 23:48",
+        "fecha_entrega": "24/11/2022",
+        "total": 7500,
+        "entregado": true
+    },
+    {
+        "id": 4,
+        "vajilla": [
+            {
+                "id": 1,
+                "nombre": "Copa de vino",
+                "precio": 2000
+            },
+            {
+                "id": 5,
+                "nombre": "Plato de entrada",
+                "precio": 2300
+            },
+            {
+                "id": 10,
+                "nombre": "Tenedor principal",
+                "precio": 5000
+            },
+            {
+                "id": 12,
+                "nombre": "Cuchillo principal",
+                "precio": 1500
+            }
+        ],
+        "nombre": "Samara",
+        "apellido": "Esperanza",
+        "direccion": "Guardia Vieja 1998, Vistalba",
+        "dni": "21757080",
+        "telefono": "155987213",
+        "trabajador": "Francisco",
+        "fecha": "24/11/2022 11:27",
+        "fecha_entrega": "19/05/2023",
+        "total": 10800,
+        "entregado": false
+    },
+    {
+        "id": 5,
+        "vajilla": [
+            {
+                "id": 6,
+                "nombre": "Plato principal",
+                "precio": 4500
+            },
+            {
+                "id": 8,
+                "nombre": "Plato de postre",
+                "precio": 5000
+            },
+            {
+                "id": 9,
+                "nombre": "Tenedor para entrada",
+                "precio": 1700
+            },
+            {
+                "id": 11,
+                "nombre": "Cuchillo para entrada",
+                "precio": 2000
+            }
+        ],
+        "nombre": "Samara",
+        "apellido": "Esperanza",
+        "direccion": "Guardia Vieja 1998, Vistalba",
+        "dni": "21757080",
+        "telefono": "155987213",
+        "trabajador": "Jesus",
+        "fecha": "24/11/2022 11:27",
+        "fecha_entrega": "07/06/2023",
+        "total": 13200,
+        "entregado": true
+    },
+    {
         "id": 6,
-        "nombre": "Plato principal",
-        "precio": 4500
-      },
-      {
+        "vajilla": [
+            {
+                "id": 3,
+                "nombre": "Copa de champagne",
+                "precio": 5000
+            },
+            {
+                "id": 4,
+                "nombre": "Plato base",
+                "precio": 1000
+            }
+        ],
+        "nombre": "Samara",
+        "apellido": "Esperanza",
+        "direccion": "Guardia Vieja 1998, Vistalba",
+        "dni": "21757080",
+        "telefono": "155987213",
+        "trabajador": "Matias",
+        "fecha": "24/11/2022 11:28",
+        "fecha_entrega": "04/10/2023",
+        "total": 6000,
+        "entregado": false
+    },
+    {
         "id": 7,
-        "nombre": "Copa de postre",
-        "precio": 3000
-      }
-    ],
-    "nombre": "Raul",
-    "apellido": "Alcaide",
-    "direccion": "Av Santa Fe 3951",
-    "dni": "44741306",
-    "telefono": "154187294",
-    "trabajador": "Nicolas",
-    "fecha": "22/11/2022 23:48",
-    "fecha_entrega": "24/11/2022",
-    "total": 7500,
-    "entregado": true
-  }
+        "vajilla": [
+            {
+                "id": 1,
+                "nombre": "Copa de vino",
+                "precio": 2000
+            },
+            {
+                "id": 12,
+                "nombre": "Cuchillo principal",
+                "precio": 1500
+            }
+        ],
+        "nombre": "Paco",
+        "apellido": "Lucas",
+        "direccion": "Coronel Apolinario Figueroa 299",
+        "dni": "47471293",
+        "telefono": "155089732",
+        "trabajador": "Federico",
+        "fecha": "24/11/2022 11:28",
+        "fecha_entrega": "22/03/2023",
+        "total": 3500,
+        "entregado": false
+    },
+    {
+        "id": 8,
+        "vajilla": [
+            {
+                "id": 8,
+                "nombre": "Plato de postre",
+                "precio": 5000
+            }
+        ],
+        "nombre": "Paco",
+        "apellido": "Lucas",
+        "direccion": "Coronel Apolinario Figueroa 299",
+        "dni": "47471293",
+        "telefono": "155089732",
+        "trabajador": "Nicolas",
+        "fecha": "24/11/2022 11:29",
+        "fecha_entrega": "08/11/2023",
+        "total": 5000,
+        "entregado": false
+    },
+    {
+        "id": 9,
+        "vajilla": [
+            {
+                "id": 6,
+                "nombre": "Plato principal",
+                "precio": 4500
+            },
+            {
+                "id": 7,
+                "nombre": "Copa de postre",
+                "precio": 3000
+            },
+            {
+                "id": 8,
+                "nombre": "Plato de postre",
+                "precio": 5000
+            }
+        ],
+        "nombre": "Paco",
+        "apellido": "Lucas",
+        "direccion": "Coronel Apolinario Figueroa 299",
+        "dni": "47471293",
+        "telefono": "155089732",
+        "trabajador": "Federico",
+        "fecha": "24/11/2022 11:30",
+        "fecha_entrega": "25/01/2023",
+        "total": 12500,
+        "entregado": false
+    }
 ]

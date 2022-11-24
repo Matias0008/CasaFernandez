@@ -216,3 +216,4 @@ def registrar_entrega(id, tv, frame):
             reemplazar_json("pedidos.json", data)
             insertar_pedidos(data, tv, limpiar_tv=True)
             frame.destroy()
+

@@ -101,7 +101,7 @@ def mostrar_pedido(pedidos, cliente):
     insertar_pedidos(pedidos, tv)
 
     if pedidos:
-        Label(frame, text=f"Pedidos totales: {len(pedidos)}\nMonto total: ${obtener_monto_total(pedidos)}\nMayor monto de un pedido: ${obtener_mayor_monto(pedidos)}\n\nFecha ultimo pedido: {obtener_ultimo_pedido(pedidos).get('fecha')}\nFecha de entrega del ultimo pedido: {obtener_ultimo_pedido(pedidos).get('fecha_entrega')}\nMonto del ultimo pedido: ${obtener_ultimo_pedido(pedidos).get('total')}\n\nFecha primer pedido: {obtener_primer_pedido(pedidos).get('fecha')}\nFecha de entrega del primer pedido: {obtener_primer_pedido(pedidos).get('fecha_entrega')}\nMonto del primer pedido: ${obtener_primer_pedido(pedidos).get('total')}",
+        Label(frame, text=f"Pedidos totales: {len(pedidos)}\nMonto total: ${obtener_monto_total(pedidos)}\nMayor monto de un pedido: ${obtener_mayor_monto(pedidos)}\n\nFecha ultimo pedido: {ultimo_pedido(pedidos).get('fecha')}\nFecha de entrega del ultimo pedido: {ultimo_pedido(pedidos).get('fecha_entrega')}\nMonto del ultimo pedido: ${ultimo_pedido(pedidos).get('total')}\n\nFecha primer pedido: {primer_pedido(pedidos).get('fecha')}\nFecha de entrega del primer pedido: {primer_pedido(pedidos).get('fecha_entrega')}\nMonto del primer pedido: ${primer_pedido(pedidos).get('total')}",
             font=("Helvetica", 14, "bold")).grid(column=1, row=1, padx=(40, 0), pady=(0, 5), rowspan=2)
     else:
             Label(frame, text=f"No hay datos para mostrar",
@@ -125,7 +125,7 @@ def agregar(data, frame, nombre_var, apellido_var, direccion_var, dni_var, telef
             })
             messagebox.showinfo("Cliente agregado",
                                 f"Se agrego el cliente {data.get('nombre')} {data.get('apellido')}", parent=frame)
-            insertar_clientes(conseguir_clientes(), tv, limpiar_tv=True)
+            insertar_clientes(conseguir_clientes(), tv)
             nombre_var.set('')
             apellido_var.set('')
             direccion_var.set('')
@@ -139,13 +139,6 @@ def obtener_monto_total(pedidos, sum=0, i=0):
 
     return obtener_monto_total(pedidos, sum + pedidos[i].get('total'), i + 1)
 
-def obtener_mayor_monto(pedidos):
-    if pedidos: return max(pedidos, key=lambda pedido: pedido.get('total')).get('total')
-    return 0
-
-def obtener_ultimo_pedido(pedidos):
-    return pedidos[-1]
-
-
-def obtener_primer_pedido(pedidos):
-    return pedidos[0]
+obtener_mayor_monto = lambda pedidos: max(pedidos, key=lambda pedido: pedido.get('total')).get('total')
+primer_pedido = lambda pedidos: pedidos[0]
+ultimo_pedido = lambda pedidos: pedidos[-1]

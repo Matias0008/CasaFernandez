@@ -23,7 +23,6 @@ def pedidos():
 
     def registrar_pedido(id, cliente, top, var):
         if var == "Ingrese el DNI de un cliente" or not agregar_vajillas(tuple(map(lambda item: str(int(item) + 1), id)), conseguir_vajillas()):
-
             messagebox.showerror(
                 "Error", "Se ha producido un error", parent=top)
         else:
@@ -46,8 +45,6 @@ def pedidos():
             tv_selec.heading("Id", text="Id")
             tv_selec.heading("Nombre", text="Nombre")
 
-            for x in range(len(agregar_vajillas(tuple(map(lambda item: str(int(item) + 1), id)), conseguir_vajillas()))):
-                Entry(frame_cantidad, width=5, font=("Helvetica", 14)).grid(column=3, row=x)
 
             frame_calendar = Frame(top_registrar)
             frame_calendar.grid(column=1, row=1, padx=30)
@@ -247,7 +244,7 @@ def ampliar_pedido(pedido, tv_pedidos):
     Button(frame, text={True: "Desmarcar entrega", False: "Registrar entrega"}[pedido.get('entregado')], command=lambda: registrar_entrega(pedido.get('id'), tv_pedidos, top),
            font=("Helvetica", 14), fg={True: "red", False: "blue"}[pedido.get('entregado')]).grid(column=0, row=3, pady=20)
 
-    Label(frame, text=f"Total: ${pedido.get('total')}\nFecha de entrega\n{pedido.get('fecha_entrega')}",
+    Label(frame, text=f"Total: ${pedido.get('total')}\nFecha de entrega: {pedido.get('fecha_entrega')}",
           font=("Helvetica", 16, "bold")).grid(column=0, row=2, )
 
     Button(frame, text="Salir", command=lambda: top.destroy(),

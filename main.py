@@ -37,4 +37,6 @@ Button(frame, text="Vajillas", command=lambda: vajillas(), font=("Helvetica", 14
 Button(frame, text="Salir", command=lambda: root.destroy(),
            font=("Helvetica", 14), fg="white", bg="red").grid(column=1, row=6,  ipadx=60, pady=(10, 0))
 
+
+
 root.mainloop()

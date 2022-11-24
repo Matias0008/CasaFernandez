@@ -1,50 +1,62 @@
 [
   {
     "id": 1,
-    "nombre": "Copa de vino"
+    "nombre": "Copa de vino",
+    "precio": 2000
   },
   {
     "id": 2,
-    "nombre": "Copa de agua"
+    "nombre": "Copa de agua",
+    "precio": 3000
   },
   {
     "id": 3,
-    "nombre": "Copa de champagne"
+    "nombre": "Copa de champagne",
+    "precio": 5000
   },
   {
     "id": 4,
-    "nombre": "Plato base"
+    "nombre": "Plato base",
+    "precio": 1000
   },
   {
     "id": 5,
-    "nombre": "Plato de entrada"
+    "nombre": "Plato de entrada",
+    "precio": 2300
   },
   {
     "id": 6,
-    "nombre": "Plato principal"
+    "nombre": "Plato principal",
+    "precio": 4500
   },
   {
     "id": 7,
-    "nombre": "Copa de postre"
+    "nombre": "Copa de postre",
+    "precio": 3000
   },
   {
     "id": 8,
-    "nombre": "Plato de postre"
+    "nombre": "Plato de postre",
+    "precio": 5000
   },
   {
     "id": 9,
-    "nombre": "Tenedor para entrada"
+    "nombre": "Tenedor para entrada",
+    "precio": 1700
   },
   {
     "id": 10,
-    "nombre": "Tenedor principal"
+    "nombre": "Tenedor principal",
+    "precio": 5000
   },
   {
     "id": 11,
-    "nombre": "Cuchillo para entrada"
+    "nombre": "Cuchillo para entrada",
+    "precio": 2000
   },
   {
     "id": 12,
-    "nombre": "Cuchillo principal"
+    "nombre": "Cuchillo principal",
+    "precio": 1500
   }
 ]

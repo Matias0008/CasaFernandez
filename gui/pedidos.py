@@ -31,6 +31,8 @@ def pedidos():
             top_registrar.title("Registrar pedido")
             top_registrar.config(width=800, height=800)
             top_registrar.resizable(0, 0)
+            frame_cantidad = Frame(top_registrar)
+            frame_cantidad.grid(column=3, row=0, rowspan=12)
 
             Label(top_registrar, text="Vajillas seleccionadas",
                   font=("Helvetica", 14)).grid(column=0, row=0, padx=20, pady=30)
@@ -43,6 +45,10 @@ def pedidos():
             tv_selec.heading("#0")
             tv_selec.heading("Id", text="Id")
             tv_selec.heading("Nombre", text="Nombre")
+
+            for x in range(len(agregar_vajillas(tuple(map(lambda item: str(int(item) + 1), id)), conseguir_vajillas()))):
+                Entry(frame_cantidad, width=5, font=("Helvetica", 14)).grid(column=3, row=x)
+
             frame_calendar = Frame(top_registrar)
             frame_calendar.grid(column=1, row=1, padx=30)
             Label(frame_calendar, text="Fecha de entrega",
@@ -70,11 +76,11 @@ def pedidos():
             trabajadores.grid(column=0, row=2, padx=30, pady=30)
 
             Button(top_registrar, text="Confirmar pedido", font=("Helvetica", 14), command=lambda: confirmar_pedido(
-                top_registrar, agregar_vajillas(tuple(map(lambda item: str(int(item) + 1), id)), conseguir_vajillas()), conseguir_un_cliente(cliente), trabajadores_var.get(), conseguir_fecha(), cal.get_date()), fg="green").grid(column=1, row=2, padx=30, pady=30)
+                top_registrar, agregar_vajillas(tuple(map(lambda item: str(int(item) + 1), id)), conseguir_vajillas()), conseguir_un_cliente(cliente), trabajadores_var.get(), conseguir_fecha(), calcular_total(agregar_vajillas(tuple(map(lambda item: str(int(item) + 1), id)), conseguir_vajillas())),cal.get_date()), fg="green").grid(column=1, row=2, padx=30, pady=30)
 
             top_registrar.mainloop()
 
-    def confirmar_pedido(top, vajillas, cliente, trabajador, fecha, fecha_entrega):
+    def confirmar_pedido(top, vajillas, cliente, trabajador, fecha, total, fecha_entrega):
         actualizar_json("pedidos.json", {
             "id": conseguir_ultima_id(conseguir_pedidos()) + 1,
             "vajilla": vajillas,
@@ -86,6 +92,7 @@ def pedidos():
             "trabajador": trabajador,
             "fecha": fecha,
             "fecha_entrega": fecha_entrega,
+            "total": total,
             "entregado": False},
         )
         messagebox.showinfo("Pedido registrado",
@@ -106,13 +113,15 @@ def pedidos():
 
     tv_vajillas = ttk.Treeview(vajilla_frame, height=12)
     tv_vajillas.grid(column=0, row=2,   padx=30, columnspan=1)
-    tv_vajillas["columns"] = ("Id", "Nombre")
+    tv_vajillas["columns"] = ("Id", "Nombre", "Precio")
     tv_vajillas.column("#0", stretch=NO, width=0)
-    tv_vajillas.column("Nombre", width=350, anchor=N)
     tv_vajillas.column("Id", width=50, anchor=N)
+    tv_vajillas.column("Nombre", width=250, anchor=N)
+    tv_vajillas.column("Precio", width=100, anchor=N)
     tv_vajillas.heading("#0")
     tv_vajillas.heading("Nombre", text="Nombre")
     tv_vajillas.heading("Id", text="ID")
+    tv_vajillas.heading("Precio", text="Precio")
     insertar_vajillas(conseguir_vajillas(), tv_vajillas)
 
     """
@@ -157,15 +166,17 @@ def pedidos():
 
     tv_pedidos.bind('<Double-Button-1>', doble_click)
     tv_pedidos.grid(column=1, row=2, padx=(50, 30), sticky=N)
-    tv_pedidos["columns"] = ("ID", "DNI", "Fecha de Entrega", "Entregado")
+    tv_pedidos["columns"] = ("ID", "DNI", "Fecha de Entrega", "Total", "Entregado")
     tv_pedidos.column("#0", stretch=NO, width=0)
     tv_pedidos.column("ID", width=50, anchor=N)
     tv_pedidos.column("DNI", width=100, anchor=N)
+    tv_pedidos.column("Total", width=100, anchor=N)
     tv_pedidos.column("Fecha de Entrega", width=150, anchor=N)
     tv_pedidos.column("Entregado", width=100, anchor=N)
     tv_pedidos.heading("#0")
     tv_pedidos.heading("ID", text="ID")
     tv_pedidos.heading("DNI", text="DNI")
+    tv_pedidos.heading("Total", text="Total")
     tv_pedidos.heading("Fecha de Entrega", text="Fecha de Entrega")
     tv_pedidos.heading("Entregado", text="Entregado")
 
@@ -180,25 +191,29 @@ def pedidos():
                                                                      row=2,
                                                                      padx=10,
                                                                      pady=(0,
-                                                                           10))
+                                                                           10),
+                                                                           ipadx=5)
     Button(frame_cmd, text="Limpiar selección", command=lambda: vaciar_selecciones(tv_vajillas,
-                                                                                   tv_vajillas.selection()), font=("Helvetica", 14)).grid(column=1, row=2, padx=7, pady=(0, 10))
+                                                                                   tv_vajillas.selection()), font=("Helvetica", 14)).grid(column=1, row=2, padx=7, pady=(0, 10), ipadx=12)
 
-    Button(frame_cmd, text="Ordenar pedidos", command=lambda: insertar_pedidos(ordenar_fechas_pedidos(conseguir_pedidos_tv(
+    Button(frame_cmd, text="Ordenar por fecha", command=lambda: insertar_pedidos(ordenar_fechas_pedidos(conseguir_pedidos_tv(
         tv_pedidos.get_children(), tv_pedidos), tv_pedidos), tv_pedidos),
-        font=("Helvetica", 14)).grid(column=2, row=2,  padx=10, pady=(0, 10))
+        font=("Helvetica", 14)).grid(column=3, row=3,  padx=10, pady=(0, 10), ipadx=2)
+
+    Button(frame_cmd, text="Ordenar por monto", command=lambda: insertar_pedidos(ordenar_montos(conseguir_pedidos_tv(tv_pedidos.get_children(), tv_pedidos), tv_pedidos), tv_pedidos),
+    font=("Helvetica", 14)).grid(column=4, row=2,  padx=10, pady=(0, 10))
 
     Button(frame_cmd, text="Filtrar entregados", command=lambda: insertar_pedidos(filtrar_entregados(conseguir_pedidos()), tv_pedidos, 0, True),
-           font=("Helvetica", 14)).grid(column=0, row=3,   padx=8, pady=(0, 10), columnspan=3)
+           font=("Helvetica", 14)).grid(column=0, row=3,   padx=10, pady=(0, 10))
 
     Button(frame_cmd, text="Filtrar no entregados", command=lambda: insertar_pedidos(filtrar_no_entregados(conseguir_pedidos()), tv_pedidos, 0, True),
-           font=("Helvetica", 14)).grid(column=2, row=3, padx=7, pady=(0, 10), columnspan=2)
+           font=("Helvetica", 14)).grid(column=1, row=3, padx=10, pady=(0, 10))
 
-    Button(frame_cmd, text="Restaurar", command=lambda: insertar_pedidos(conseguir_pedidos(), tv_pedidos, 0, True),
+    Button(frame_cmd, text="Mostrar todos", command=lambda: insertar_pedidos(conseguir_pedidos(), tv_pedidos, 0, True),
            font=("Helvetica", 14)).grid(column=3, row=2,  ipadx=20, padx=10, pady=(0, 10))
 
     Button(frame_cmd, text="Salir", command=lambda: top_pedidos.destroy(),
-           font=("Helvetica", 14), fg="red").grid(column=4, row=2,  ipadx=30, padx=10, pady=(0, 10))
+           font=("Helvetica", 14), fg="red").grid(column=4, row=3,  ipadx=59, padx=10, pady=(0, 10))
 
 
 def ampliar_pedido(pedido, tv_pedidos):
@@ -212,13 +227,15 @@ def ampliar_pedido(pedido, tv_pedidos):
     tv = ttk.Treeview(frame, height=12,
                       selectmode="none")
     tv.grid(column=0, row=1, padx=30, sticky=N, pady=20)
-    tv["columns"] = ("ID", "Nombre")
+    tv["columns"] = ("ID", "Nombre", "Precio")
     tv.column("#0", stretch=NO, width=0)
     tv.column("ID", width=50, anchor=N)
     tv.column("Nombre", width=200, anchor=N)
+    tv.column("Precio", width=100, anchor=N)
     tv.heading("#0")
     tv.heading("ID", text="ID")
     tv.heading("Nombre", text="Nombre")
+    tv.heading("Precio", text="Precio")
     insertar_vajillas(pedido.get('vajilla'), tv)
 
     Label(frame, text=pedido.get('fecha'),
@@ -230,7 +247,7 @@ def ampliar_pedido(pedido, tv_pedidos):
     Button(frame, text={True: "Desmarcar entrega", False: "Registrar entrega"}[pedido.get('entregado')], command=lambda: registrar_entrega(pedido.get('id'), tv_pedidos, top),
            font=("Helvetica", 14), fg={True: "red", False: "blue"}[pedido.get('entregado')]).grid(column=0, row=3, pady=20)
 
-    Label(frame, text=f"Fecha de entrega\n{pedido.get('fecha_entrega')}",
+    Label(frame, text=f"Total: ${pedido.get('total')}\nFecha de entrega\n{pedido.get('fecha_entrega')}",
           font=("Helvetica", 16, "bold")).grid(column=0, row=2, )
 
     Button(frame, text="Salir", command=lambda: top.destroy(),

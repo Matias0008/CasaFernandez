@@ -1,6 +1,5 @@
 from modules.init import *
 
-
 def clientes():
     top = Toplevel()
     top.title("Casa Fernandez - Clientes")
@@ -14,10 +13,14 @@ def clientes():
     frame_tv.grid(column=0, row=0)
     Label(frame_tv, text="Clientes",
           font=("Helvetica", 16, "bold")).grid(column=0, row=1, pady=(0, 10))
+    def doble_click(event):
+        mostrar_pedido(list(filter(lambda pedido: pedido.get('dni') == str(tv.item(tv.selection())['values'][0]), conseguir_pedidos())), conseguir_un_cliente(str(tv.item(tv.selection())['values'][0])))
+
     tv = ttk.Treeview(frame_tv, height=13,
-                      selectmode="none")
+                      selectmode="browse")
     tv.grid(column=0, row=2, padx=30, sticky=N)
     tv["columns"] = ("DNI", "Nombre", "Apellido", "Teléfono")
+    tv.bind('<Double-Button-1>', doble_click)
     tv.column("#0", stretch=NO, width=0)
     tv.column("DNI", width=150, anchor=N)
     tv.column("Nombre", width=100, anchor=N)
@@ -71,6 +74,42 @@ def clientes():
 
     top.mainloop()
 
+def mostrar_pedido(pedidos, cliente):
+    top = Toplevel()
+    top.title(f"Pedidos del cliente {cliente.get('nombre')} {cliente.get('apellido')}")
+    frame = Frame(top)
+    frame.grid(column=0, row=0, padx=20, pady=20)
+    Label(frame, text=f"Pedidos del cliente {cliente.get('nombre')} {cliente.get('apellido')}",
+          font=("Helvetica", 14, "bold")).grid(column=0, row=0, pady=(0, 5))
+    tv = ttk.Treeview(frame, height=13,
+                      selectmode="none")
+    tv.grid(column=0, row=1,  sticky=N)
+    tv.tag_configure('entregado', background='#D3D3D3')
+    tv["columns"] = ("ID", "DNI","Fecha de entrega", "Total", "Entregado")
+    tv.column("#0", stretch=NO, width=0)
+    tv.column("ID", width=50, anchor=N)
+    tv.column("DNI", width=100, anchor=N)
+    tv.column("Fecha de entrega", width=150, anchor=N)
+    tv.column("Total", width=100, anchor=N)
+    tv.column("Entregado", width=100, anchor=N)
+    tv.heading("#0")
+    tv.heading("ID", text="ID")
+    tv.heading("DNI", text="DNI")
+    tv.heading("Fecha de entrega", text="Fecha de entrega")
+    tv.heading("Total", text="Total")
+    tv.heading("Entregado", text="Entregado")
+    insertar_pedidos(pedidos, tv)
+
+    if pedidos:
+        Label(frame, text=f"Pedidos totales: {len(pedidos)}\nMonto total: ${obtener_monto_total(pedidos)}\nMayor monto de un pedido: ${obtener_mayor_monto(pedidos)}\n\nFecha ultimo pedido: {obtener_ultimo_pedido(pedidos).get('fecha')}\nFecha de entrega del ultimo pedido: {obtener_ultimo_pedido(pedidos).get('fecha_entrega')}\nMonto del ultimo pedido: ${obtener_ultimo_pedido(pedidos).get('total')}\n\nFecha primer pedido: {obtener_primer_pedido(pedidos).get('fecha')}\nFecha de entrega del primer pedido: {obtener_primer_pedido(pedidos).get('fecha_entrega')}\nMonto del primer pedido: ${obtener_primer_pedido(pedidos).get('total')}",
+            font=("Helvetica", 14, "bold")).grid(column=1, row=1, padx=(40, 0), pady=(0, 5), rowspan=2)
+    else:
+            Label(frame, text=f"No hay datos para mostrar",
+          font=("Helvetica", 14, "bold")).grid(column=1, row=1, padx=(40, 0), rowspan=3)
+
+    Button(frame, text="Salir", command=lambda: top.destroy(),
+           font=("Helvetica", 14), fg="red").grid(column=1, row=3,  ipadx=59, padx=(40, 0))
+    top.mainloop()
 
 def agregar(data, frame, nombre_var, apellido_var, direccion_var, dni_var, telefono_var, tv):
     if not conseguir_un_cliente(data.get('dni')):
@@ -94,3 +133,19 @@ def agregar(data, frame, nombre_var, apellido_var, direccion_var, dni_var, telef
     else:
         messagebox.showerror(
             "Error", "Error, el cliente ya existe", parent=frame)
+
+def obtener_monto_total(pedidos, sum=0, i=0):
+    if i == len(pedidos): return sum
+
+    return obtener_monto_total(pedidos, sum + pedidos[i].get('total'), i + 1)
+
+def obtener_mayor_monto(pedidos):
+    if pedidos: return max(pedidos, key=lambda pedido: pedido.get('total')).get('total')
+    return 0
+
+def obtener_ultimo_pedido(pedidos):
+    return pedidos[-1]
+
+
+def obtener_primer_pedido(pedidos):
+    return pedidos[0]

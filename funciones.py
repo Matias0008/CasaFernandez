@@ -4,10 +4,10 @@ from datetime import datetime
 from time import *
 
 
-def mostrar_hora(label, col, row):
-    label.grid(column=col, row=row)
+def mostrar_hora(label, col, row, columnspan=1, pady=0, padx=0):
+    label.grid(column=col, row=row, columnspan=columnspan, pady=pady, padx=padx)
     label.config(text=strftime('%H:%M:%S %p'))
-    label.after(1000, lambda: mostrar_hora(label, col, row))
+    label.after(1000, lambda: mostrar_hora(label, col, row, columnspan=columnspan, pady=pady, padx=padx))
 
 
 def conseguir_pedidos():
@@ -37,7 +37,6 @@ def mapear_ids(ids, tv, temp=[], i=0):
 def conseguir_un_pedido(id):
     return list(filter(lambda pedido: pedido.get('id') == id, conseguir_pedidos()))[0]
 
-
 def ordenar_fechas_pedidos(pedidos, tv):
     pedidos.sort(key=lambda pedido: strptime(
         pedido['fecha_entrega'], '%d/%m/%Y'))
@@ -45,6 +44,9 @@ def ordenar_fechas_pedidos(pedidos, tv):
     tv.delete(*tv.get_children())
     return pedidos
 
+def ordenar_montos(pedidos, tv):
+    tv.delete(*tv.get_children())
+    return sorted(pedidos, key=lambda pedido: pedido['total'], reverse=True) 
 
 def filtrar_entregados(pedidos):
     return list(filter(lambda pedido: pedido['entregado'], pedidos))
@@ -63,7 +65,7 @@ def insertar_pedidos(pedidos, tv,  i=0, limpiar_tv=False):
 
     tv.insert("", 'end', id=i, values=(
         pedidos[i]['id'],
-        pedidos[i]['dni'], pedidos[i]['fecha_entrega'], {True: "Si", False: "No"}[pedidos[i]['entregado']]), tags={True: "entregado", False: ""}[pedidos[i]['entregado']])
+        pedidos[i]['dni'], pedidos[i]['fecha_entrega'], f"${pedidos[i]['total']}",{True: "Si", False: "No"}[pedidos[i]['entregado']]), tags={True: "entregado", False: ""}[pedidos[i]['entregado']])
 
     return insertar_pedidos(pedidos, tv, i + 1)
 
@@ -87,10 +89,15 @@ def insertar_vajillas(vajillas, tv, i=0):
         return
 
     tv.insert("", 'end', id=i, values=(
-        vajillas[i]['id'], vajillas[i]['nombre'],))
+        vajillas[i]['id'], vajillas[i]['nombre'], f"${vajillas[i].get('precio')}"))
 
     return insertar_vajillas(vajillas, tv, i + 1)
 
+def calcular_total(vajillas, i=0, tmp=0):
+    if i == len(vajillas):
+        return tmp
+    
+    return calcular_total(vajillas, i+1, tmp + vajillas[i].get('precio'))
 
 def conseguir_ultima_id(iterable):
     if list(filter(lambda item: item['id'], iterable)):
